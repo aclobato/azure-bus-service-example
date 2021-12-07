@@ -16,7 +16,7 @@ namespace ServiceBusExample
         public MessagesHostedService(IOptions<AppConfig> configuration)
         {
             _queueClient = new QueueClient(
-                connectionString: configuration.Value.ConnectionStringServiceBus,
+                connectionString: configuration.Value.ServiceBusConnectionString,
                 entityPath: configuration.Value.QueueName
             );
         }

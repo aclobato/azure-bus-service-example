@@ -7,7 +7,7 @@ namespace ServiceBusExample
 {
     public class AppConfig
     {
-        public string ConnectionStringServiceBus { get; set; }
+        public string ServiceBusConnectionString { get; set; }
         public string QueueName { get; set; }
     }
 }

@@ -14,7 +14,12 @@ namespace ServiceBusExample
     public class Startup
     {
 
-        public IConfigurationRoot Configuration { get; set; }
+        public IConfiguration Configuration { get; set; }
+
+        public Startup(IConfiguration configuration)
+        {
+            Configuration = configuration;
+        }
 
         // This method gets called by the runtime. Use this method to add services to the container.
         // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
@@ -24,11 +29,6 @@ namespace ServiceBusExample
 
             // Add functionality to inject IOptions<T>
             services.AddOptions();
-
-            var builder = new ConfigurationBuilder()
-            .AddJsonFile("appsettings.json", optional: true, reloadOnChange: true);
-
-            Configuration = builder.Build();
 
             // Add our Config object so it can be injected
             services.Configure<AppConfig>(Configuration.GetSection("AppConfig"));
